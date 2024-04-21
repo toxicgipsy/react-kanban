@@ -2,6 +2,11 @@ import { useEffect, useState } from "react";
 
 import { cardList } from "../lib/data";
 import MainBlock from "../components/Main/Main";
+import PopExit from "../components/PopUps/PopExit";
+import PopBrowse from "../components/PopUps/PopBrowse";
+import PopNewCard from "../components/PopUps/PopNewCard";
+import Main from "../components/Main/Main";
+import Header from "../components/Header/Header";
 
 const MainPage = () => {
   const [cards, setCards] = useState(cardList);
