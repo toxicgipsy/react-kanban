@@ -32,7 +32,7 @@ const Signup = () => {
                   placeholder="Пароль"
                 />
                 <S.ModalBtnSignUpEnt id="SignUpEnter">
-                  <a href="../main.html">Зарегистрироваться</a>{" "}
+                  <Link to={paths.MAIN}>Зарегистрироваться</Link>
                 </S.ModalBtnSignUpEnt>
                 <S.ModalFormGroup>
                   <p>
