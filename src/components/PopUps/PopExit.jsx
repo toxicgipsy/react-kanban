@@ -16,10 +16,17 @@ const PopExit = ({ logout }) => {
       <PopExit id="popExit">
         <PopExitContainer>
           <PopExitBlock>
-            <PopExitTtl><h2>Выйти из аккаунта?</h2></PopExitTtl>
+            <PopExitTtl>
+              <h2>Выйти из аккаунта?</h2>
+            </PopExitTtl>
             <PopExitForm id="formExit" action="#">
-              <PopExitYes onClick={logout}> <Link to={paths.LOGIN}>Да, выйти</Link></PopExitYes>
-              <PopExitNo id="exitNo"><Link to={paths.MAIN}>Нет, остаться</Link></PopExitNo>
+              <PopExitYes onClick={logout}>
+                {" "}
+                <Link to={paths.LOGIN}>Да, выйти</Link>
+              </PopExitYes>
+              <PopExitNo id="exitNo">
+                <Link to={paths.MAIN}>Нет, остаться</Link>
+              </PopExitNo>
             </PopExitForm>
           </PopExitBlock>
         </PopExitContainer>
