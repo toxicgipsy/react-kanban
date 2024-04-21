@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import { paths } from "./lib/path";
+import PrivateRoutes from "./components/Routes/PrivateRouters";
 import MainPage from "./pages/MainPage";
 import CardPage from "./pages/CardPage";
+import ExitPage from "./pages/ExitPage";
 import LoginPage from "./pages/LoginPage";
 import RegistrationPage from "./pages/RegistrationPage";
-import ExitPage from "./pages/ExitPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import PrivateRoutes from "./components/Routes/PrivateRouters";
 
 const AppRouters = () => {
   return (
