@@ -21,11 +21,10 @@ const PopExit = ({ logout }) => {
             </PopExitTtl>
             <PopExitForm id="formExit" action="#">
               <PopExitYes onClick={logout}>
-                {" "}
                 <Link to={paths.LOGIN}>Да, выйти</Link>
               </PopExitYes>
               <PopExitNo id="exitNo">
-                <Link to={paths.MAIN}>Нет, остаться</Link>
+                <Link to={"/"}>Нет, остаться</Link>
               </PopExitNo>
             </PopExitForm>
           </PopExitBlock>

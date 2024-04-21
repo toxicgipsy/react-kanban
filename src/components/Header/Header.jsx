@@ -2,6 +2,7 @@ import { useState } from "react";
 import { cardList } from "../../lib/data";
 import * as S from "./Header.styled";
 import { Container } from "../Common.js/common.styles";
+import { Link } from "react-router-dom";
 
 function Header({ cards, setCards }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,9 +23,9 @@ function Header({ cards, setCards }) {
         <Container>
           <S.HeaderBlock>
             <S.HeaderLogo>
-              <a href="" target="_self">
+              <Link to={"/"}>
                 <img src="../public/logo.png" alt="logo" />
-              </a>
+              </Link>
             </S.HeaderLogo>
             {/* <div className="header__logo _dark">
               <a href="" target="_self">

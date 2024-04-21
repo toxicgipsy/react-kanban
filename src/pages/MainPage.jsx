@@ -7,6 +7,7 @@ import PopBrowse from "../components/PopUps/PopBrowse";
 import PopNewCard from "../components/PopUps/PopNewCard";
 import Main from "../components/Main/Main";
 import Header from "../components/Header/Header";
+import { Outlet } from "react-router-dom";
 
 const MainPage = () => {
   const [cards, setCards] = useState(cardList);
@@ -21,6 +22,7 @@ const MainPage = () => {
   return (
     <>
       <MainBlock setCards={setCards} cards={cards} />
+      <Outlet />
       {isLoading && <span>Данные загружаются</span>}
       {!isLoading && (
         <div className="wrapper">
