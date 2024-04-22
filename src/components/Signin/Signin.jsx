@@ -3,7 +3,7 @@ import { GlobalStyle } from "../Global/Global.styled";
 import { Link } from "react-router-dom";
 import * as S from "./Signin.styled";
 
-const Signin = () => {
+const Signin = ({ login }) => {
   return (
     <>
       <GlobalStyle />
@@ -27,8 +27,8 @@ const Signin = () => {
                   id="formpassword"
                   placeholder="Пароль"
                 />
-                <S.ModalBtnEnter id="btnEnter">
-                  <Link to={paths.MAIN}>Войти</Link>
+                <S.ModalBtnEnter onClick={login} id="btnEnter">
+                  Войти
                 </S.ModalBtnEnter>
                 <S.ModalFormGrop>
                   <p>Нужно зарегистрироваться?</p>

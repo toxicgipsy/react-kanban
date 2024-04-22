@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { paths } from "../../lib/path";
 import * as S from "./Signup.styled";
 
-const Signup = () => {
+const Signup = ({ login }) => {
   return (
     <>
       <S.Wrapper>
@@ -31,8 +31,8 @@ const Signup = () => {
                   id="passwordFirst"
                   placeholder="Пароль"
                 />
-                <S.ModalBtnSignUpEnt id="SignUpEnter">
-                  <Link to={paths.MAIN}>Зарегистрироваться</Link>
+                <S.ModalBtnSignUpEnt onClick={login} id="SignUpEnter">
+                  Зарегистрироваться
                 </S.ModalBtnSignUpEnt>
                 <S.ModalFormGroup>
                   <p>
