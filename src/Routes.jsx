@@ -16,21 +16,25 @@ const AppRouters = () => {
     setIsAuth(true);
     navigate(paths.MAIN);
   };
+  const logout = () => {
+    setIsAuth(false);
+    navigate(paths.LOGIN);
+  };
 
   return (
     <Routes>
       <Route element={<PrivateRoutes isAuth={isAuth} />}>
         <Route path={paths.MAIN} element={<MainPage />}>
           <Route path={paths.CARD} element={<CardPage />} />
-          <Route path={paths.EXIT} element={<ExitPage />} />
+          <Route path={paths.EXIT} element={<ExitPage logout={logout} />} />
         </Route>
-        <Route path={paths.NOT_FOUND} element={<NotFoundPage />} />
       </Route>
       <Route path={paths.LOGIN} element={<LoginPage login={login} />} />
       <Route
         path={paths.REGISTER}
         element={<RegistrationPage login={login} />}
       />
+      <Route path={paths.NOT_FOUND} element={<NotFoundPage />} />
     </Routes>
   );
 };

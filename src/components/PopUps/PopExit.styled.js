@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Hover01, Hover03 } from "../Common.js/common.styles";
 
-export const PopExit = styled.div`
+export const PopExitx = styled.div`
   display: block;
   width: 100%;
   height: 100%;

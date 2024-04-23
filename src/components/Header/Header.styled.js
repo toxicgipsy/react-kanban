@@ -94,7 +94,7 @@ export const HeaderBtnExit = styled.button`
 `;
 
 export const HeaderPopUserSet = styled.div`
-  display: none;
+  display: block;
   position: absolute;
   top: 61px;
   right: 0;

@@ -3,10 +3,12 @@ import { cardList } from "../../lib/data";
 import * as S from "./Header.styled";
 import { Container } from "../Common.js/common.styles";
 import { Link } from "react-router-dom";
+import { paths } from "../../lib/path";
 
 function Header({ cards, setCards }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => setIsOpen((prevState) => !prevState);
+
   const addNewCard = () => {
     const newCard = {
       id: cardList.length + 1,
@@ -34,11 +36,9 @@ function Header({ cards, setCards }) {
             </div> */}
             <S.HeaderNav>
               <S.HeaderBtn onClick={addNewCard}>
-                <a href="#">Создать новую задачу</a>
+                Создать новую задачу
               </S.HeaderBtn>
-              <S.HeaderUser href="#user-set-target" onClick={toggleDropdown}>
-                Ivan Ivanov
-              </S.HeaderUser>
+              <S.HeaderUser onClick={toggleDropdown}>Ivan Ivanov</S.HeaderUser>
               {isOpen && (
                 <S.HeaderPopUserSet id="user-set-target">
                   <S.HeaderPopUserSetName>Ivan Ivanov</S.HeaderPopUserSetName>
@@ -54,7 +54,7 @@ function Header({ cards, setCards }) {
                     />
                   </S.HeaderPopUserSetTheme>
                   <S.HeaderBtnExit>
-                    <a href="#popExit">Выйти</a>
+                    <Link to={paths.EXIT}> Выйти </Link>
                   </S.HeaderBtnExit>
                 </S.HeaderPopUserSet>
               )}
