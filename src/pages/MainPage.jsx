@@ -1,7 +1,11 @@
+import "../App.css";
 import { useEffect, useState } from "react";
-
 import { cardList } from "../lib/data";
-import MainBlock from "../components/Main/Main";
+import PopNewCard from "../components/PopUps/PopNewCard";
+import Main from "../components/Main/Main";
+import Header from "../components/Header/Header";
+import { Outlet } from "react-router-dom";
+import { GlobalStyle } from "../components/Global/Global.styled";
 
 const MainPage = () => {
   const [cards, setCards] = useState(cardList);
@@ -15,18 +19,17 @@ const MainPage = () => {
 
   return (
     <>
-      <MainBlock setCards={setCards} cards={cards} />
-      {isLoading && <span>Данные загружаются</span>}
-      {!isLoading && (
-        <div className="wrapper">
-          <PopExit />
-          <PopNewCard />
-          <PopBrowse />
-          <Header setCards={setCards} cards={cards} />
-          <Main cards={cards} />
-          <div></div>
-        </div>
-      )}
+      <GlobalStyle />
+      <div className="wrapper">
+        <PopNewCard />
+        <Header setCards={setCards} cards={cards} />
+        {isLoading ? (
+          <span>Данные загружаются</span>
+        ) : (
+          <Main setCards={setCards} cards={cards} />
+        )}
+      </div>
+      <Outlet />
       <script src="js/script.js"></script>
     </>
   );
