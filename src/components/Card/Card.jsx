@@ -1,21 +1,21 @@
 import { Link } from "react-router-dom";
 import * as S from "./Card.styled";
 
-function Card({ title, date, theme, color, id }) {
-  // let color;
-  // switch (theme) {
-  //   case "Web Design":
-  //     color = "_orange";
-  //     break;
-  //   case "Copywriting":
-  //     color = "_purple";
-  //     break;
-  //   case "Research":
-  //     color = "_green";
-  //     break;
-  //   default:
-  //     color = "_gray";
-  // }
+function Card({ title, date, topic, id }) {
+  let color;
+  switch (topic) {
+    case "Web Design":
+      color = "_orange";
+      break;
+    case "Copywriting":
+      color = "_purple";
+      break;
+    case "Research":
+      color = "_green";
+      break;
+    default:
+      color = "_gray";
+  }
   return (
     <>
       <S.Card>
@@ -23,7 +23,7 @@ function Card({ title, date, theme, color, id }) {
           <S.CardCard>
             <S.CardGroup>
               <S.CardTheme $color={color}>
-                <p>{theme}</p>
+                <p>{topic}</p>
               </S.CardTheme>
               <Link to={`/card/${id}`}>
                 <S.CardBtn>

@@ -2,8 +2,26 @@ import { paths } from "../../lib/path";
 import { GlobalStyle } from "../Global/Global.styled";
 import { Link } from "react-router-dom";
 import * as S from "./Signin.styled";
+import { useState } from "react";
+import { loginUser } from "../../lib/api";
 
 const Signin = ({ login }) => {
+  const [loginInput, setLoginInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
+
+  const authUser = (event) => {
+    event.preventDefault();
+    loginUser({ login: loginInput, password: passwordInput })
+      .then((response) => {
+        console.log(response);
+        //Переход на главную
+        login(response.user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <>
       <GlobalStyle />
@@ -20,14 +38,16 @@ const Signin = ({ login }) => {
                   name="login"
                   id="formlogin"
                   placeholder="Эл. почта"
+                  onChange={(event) => setLoginInput(event.target.value)}
                 />
                 <S.ModalInput
                   type="password"
                   name="password"
                   id="formpassword"
                   placeholder="Пароль"
+                  onChange={(event) => setPasswordInput(event.target.value)}
                 />
-                <S.ModalBtnEnter onClick={login} id="btnEnter">
+                <S.ModalBtnEnter onClick={authUser} id="btnEnter">
                   Войти
                 </S.ModalBtnEnter>
                 <S.ModalFormGrop>
