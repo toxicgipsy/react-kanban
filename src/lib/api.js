@@ -26,7 +26,7 @@ export async function registrationUser({ name, login, password }) {
   });
 
   if (!response.ok) {
-    throw new Error("Не могу найти по ip");
+    throw new Error("Пользователь с таким логином уже существует");
   }
 
   const data = await response.json();

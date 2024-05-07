@@ -16,7 +16,6 @@ const MainPage = ({ user }) => {
     getTasks(user.token)
       .then((data) => {
         setCards(data.tasks);
-        console.log(data);
         setIsLoading(false);
       })
       .catch((error) => {

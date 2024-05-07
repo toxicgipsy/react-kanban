@@ -8,6 +8,7 @@ const Signup = ({ login }) => {
   const [nameInput, setNameInput] = useState("");
   const [loginInput, setLoginInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
+  const [userExists, setUserExists] = useState(false);
 
   const regUser = () => {
     registrationUser({
@@ -20,6 +21,7 @@ const Signup = ({ login }) => {
         login(response.user);
       })
       .catch((error) => {
+        setUserExists(true);
         console.log(error.message);
       });
   };
@@ -62,6 +64,11 @@ const Signup = ({ login }) => {
                 >
                   Зарегистрироваться
                 </S.ModalBtnSignUpEnt>
+                {userExists ? (
+                  <p style={{ color: "red" }}>
+                    Пользователь с таким логином уже существует
+                  </p>
+                ) : null}
                 <S.ModalFormGroup>
                   <p>
                     Уже есть аккаунт?{" "}
