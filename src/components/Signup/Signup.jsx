@@ -8,7 +8,7 @@ const Signup = ({ login }) => {
   const [nameInput, setNameInput] = useState("");
   const [loginInput, setLoginInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
-  const [userExists, setUserExists] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const regUser = () => {
     registrationUser({
@@ -21,7 +21,7 @@ const Signup = ({ login }) => {
         login(response.user);
       })
       .catch((error) => {
-        setUserExists(true);
+        setIsError(true);
         console.log(error.message);
       });
   };
@@ -64,7 +64,7 @@ const Signup = ({ login }) => {
                 >
                   Зарегистрироваться
                 </S.ModalBtnSignUpEnt>
-                {userExists ? (
+                {isError ? (
                   <p style={{ color: "red" }}>
                     Пользователь с таким логином уже существует
                   </p>

@@ -8,7 +8,7 @@ import { loginUser } from "../../lib/api";
 const Signin = ({ login }) => {
   const [loginInput, setLoginInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
-  const [userExists, setUserExists] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const authUser = (event) => {
     event.preventDefault();
@@ -19,7 +19,7 @@ const Signin = ({ login }) => {
         login(response.user);
       })
       .catch((error) => {
-        setUserExists(true);
+        setIsError(true);
         console.log(error.message);
       });
   };
@@ -53,7 +53,7 @@ const Signin = ({ login }) => {
                   Войти
                 </S.ModalBtnEnter>
                 <S.ModalFormGrop>
-                  {userExists ? (
+                  {isError ? (
                     <p style={{ color: "red" }}>
                       Не правильно ввел логин и пароль
                     </p>
