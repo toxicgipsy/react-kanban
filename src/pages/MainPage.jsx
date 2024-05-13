@@ -1,34 +1,45 @@
-import "../App.css";
-import { useEffect, useState } from "react";
-import { cardList } from "../lib/data";
-import PopNewCard from "../components/PopUps/PopNewCard";
-import Main from "../components/Main/Main";
 import Header from "../components/Header/Header";
+import Main from "../components/Main/Main";
+import PopNewCard from "../components/PopUps/PopNewCard";
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { GlobalStyle } from "../components/Global/Global.styled";
+import { GlobalStyle, Wrapper } from "../components/Global/Global.styled";
+import { getTasks } from "../lib/api";
+import "../App.css";
 
-const MainPage = () => {
-  const [cards, setCards] = useState(cardList);
+const MainPage = ({ user }) => {
+  const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [errorTasks, setErrorTasks] = useState(null);
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 100);
+    getTasks(user.token)
+      .then((data) => {
+        setCards(data.tasks);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setErrorTasks(error.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   return (
     <>
       <GlobalStyle />
-      <div className="wrapper">
+      <Wrapper>
         <PopNewCard />
         <Header setCards={setCards} cards={cards} />
         {isLoading ? (
           <span>Данные загружаются</span>
         ) : (
-          <Main setCards={setCards} cards={cards} />
+          <Main setCards={setCards} cards={cards} errorTasks={errorTasks} />
         )}
-      </div>
+        <br />
+        {errorTasks && <span style={{ color: "red" }}>Случилась ошибка</span>}
+      </Wrapper>
       <Outlet />
       <script src="js/script.js"></script>
     </>

@@ -11,8 +11,8 @@ function Header({ cards, setCards }) {
 
   const addNewCard = () => {
     const newCard = {
-      id: cardList.length + 1,
-      theme: "Web desigin",
+      _id: cardList.length + 1,
+      topic: "Web Design",
       title: "Новая задача",
       date: "30.04.24",
       status: "Без статуса",

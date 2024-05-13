@@ -12,10 +12,12 @@ import { useState } from "react";
 const AppRouters = () => {
   const [isAuth, setIsAuth] = useState(false);
   const navigate = useNavigate();
-  const login = () => {
-    setIsAuth(true);
+  const login = (newUser) => {
+    localStorage.setItem("user", JSON.stringify(newUser));
+    setIsAuth(newUser);
     navigate(paths.MAIN);
   };
+
   const logout = () => {
     setIsAuth(false);
     navigate(paths.LOGIN);
@@ -24,7 +26,7 @@ const AppRouters = () => {
   return (
     <Routes>
       <Route element={<PrivateRoutes isAuth={isAuth} />}>
-        <Route path={paths.MAIN} element={<MainPage />}>
+        <Route path={paths.MAIN} element={<MainPage user={isAuth} />}>
           <Route path={paths.CARD} element={<CardPage />} />
           <Route path={paths.EXIT} element={<ExitPage logout={logout} />} />
         </Route>
